@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Word and Character Counter</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    label {
+        font-weight: bold;
+    }
+    #textInput {
+        width: 100%;
+        height: 100px;
+        margin-bottom: 10px;
+        padding: 5px;
+        font-size: 16px;
+    }
+</style>
+</head>
+<body>
+    <h2>Word and Character Counter</h2>
+    <label for="textInput">Enter your text:</label><br>
+    <textarea id="textInput" oninput="countWordsAndCharacters()"></textarea><br>
+    <p>Words count: <span id="wordCount">0</span></p>
+    <p>Characters count: <span id="charCount">0</span></p>
+    <button onclick="resetInput()">Reset</button>
+
+    <script>
+        function countWordsAndCharacters() {
+            let text = document.getElementById('textInput').value;
+            let words = text.match(/\S+/g) || [];
+            let wordCount = words.length;
+            let charCount = text.length;
+            document.getElementById('wordCount').textContent = wordCount;
+            document.getElementById('charCount').textContent = charCount;
+        }
+
+        function resetInput() {
+            document.getElementById('textInput').value = '';
+            document.getElementById('wordCount').textContent = '0';
+            document.getElementById('charCount').textContent = '0';
+        }
+    </script>
+</body>
+</html>
